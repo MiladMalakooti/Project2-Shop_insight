@@ -5,7 +5,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('user', { title: 'Express', user: req.user });
 });
 
 // router.get('/', function(req, res) {
@@ -20,7 +20,7 @@ router.get('/oauth2callback', passport.authenticate(
   'google',
   {
     successRedirect: '/users',
-    failureRedirect: '/users' // it could be directed to its own page where the login was not successful
+    failureRedirect: '/' // it could be directed to its own page where the login was not successful
   }
 ));
 

@@ -5,11 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session =require('express-session');
 const passport = require('passport');
-require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+require('dotenv').config();
 
 
 require('./config/database')
@@ -31,7 +31,7 @@ app.use(cookieParser());
 
 app.use(session({
   secret: 'Project2',
-  ressave: false,
+  resave: false,
   saveUninitialized: true
 }));
 app.use(passport.initialize());
