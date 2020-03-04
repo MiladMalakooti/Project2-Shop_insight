@@ -1,4 +1,4 @@
-var mangoose = require('mongoose');
+var mongoose = require('mongoose');
 
 var aboutSchema = new mongoose.Schema({
     text: String
@@ -6,7 +6,7 @@ var aboutSchema = new mongoose.Schema({
     timeStamps: true
 });
 
-var userSchema = new mangoose.Schema({
+var userSchema = new mongoose.Schema({
     name: String,
     email: String,
     picture: String,

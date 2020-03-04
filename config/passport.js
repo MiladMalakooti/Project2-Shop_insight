@@ -2,7 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../models/user');
 
-passpott.use(new GoogleStrategy({
+passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_SECRET,
   callbackURL: process.env.GOOGLE_CALLBACK
@@ -22,11 +22,9 @@ passpott.use(new GoogleStrategy({
           googleId: profile.id
         });
         newUser.save(function (err) {
-          if (err) function cb(err);
+          if (err) return cb(err);
            return cb(null, newUser);
         });
-
-
       }
     });
   }
