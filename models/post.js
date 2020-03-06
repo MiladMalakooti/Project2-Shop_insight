@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
+    product: String,
     url: String, // a youtube video
     user: String,
     description: String,
