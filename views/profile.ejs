@@ -5,21 +5,14 @@
 
     <div>
       <p>E-mail: <%= user.email %></p>
-      <a
-      href="/" class="btn btn-outline-warning btn-sm" >Home Page</a>
-      
-      <a href="/editprofile/<%=user._id%>" class="btn btn-outline-warning btn-sm"
-        >Profile Settings</a>
-        
-        <ul class="right">
-          <li>
-          <% if (user) { %>
-            <a href="/logout"><i class="material-icons left"></i>Log Out</a>
-          <% } else { %>
-            <a href="/auth/google"></i>Login with Google</a>
-          <% } %>
-          </li>
-        </ul>
+      <a href="/" class="btn btn-outline-warning btn-sm" >Home Page</a> <br><br>
+
+      <a href="/post" class="btn btn-outline-warning btn-sm" >Post a New product</a> <br><br>
+        <% if (user) { %>
+          <a href="/logout"><i class="material-icons left"></i>Log Out</a>
+        <% } else { %>
+          <a href="/auth/google"></i>Login with Google</a>
+        <% } %>
     </div>
   </div>
 </div>
