@@ -1,8 +1,8 @@
 var Posts = require('../models/post');
-var Users = require('../models/user');
+var Profile = require('../models/profile');
 
 //funcs:
-function show(req, res, next) {
+function show(req, res) {
   req.user.populate('photos', function (err, user) {
       res.render('profile', { user: req.user, title: 'Shop Insight' });
   })

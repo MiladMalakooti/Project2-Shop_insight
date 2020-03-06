@@ -1,5 +1,5 @@
+const Profile = require('../models/profile');//
 const Post = require('../models/post');//
-const Profile = require('../model/profile');//
 
 
 module.exports = {
@@ -7,13 +7,6 @@ module.exports = {
   // create
 };
 
-function show(req, res, next) {
+function show(req, res) {
   res.render('post', { title: 'Shop Insight', user: req.user })
 }
-
-const reviewSchema = new Schema({
-  content: String,
-  rating: {type: Number, min: 1, max: 5, default: 5}
-}, {
-  timestamps: true
-});

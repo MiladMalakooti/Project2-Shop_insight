@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var feedCtrl = require('../controllers/feed');
-var User = require('../models/user')
+var User = require('../models/profile')
 
 router.get('/', isLoggedIn, feedCtrl.index);
 

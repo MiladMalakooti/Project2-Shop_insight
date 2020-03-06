@@ -3,7 +3,10 @@ var router = express.Router();
 var postCtrl = require('../controllers/post');
 
 
+
+
 router.get('/', isLoggedIn, postCtrl.show);
+
 
 
 function isLoggedIn(req, res, next) {

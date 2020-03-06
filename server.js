@@ -10,6 +10,7 @@ const passport = require('passport');
 var indexRoute = require('./routes/index');
 var profileRoute = require('./routes/profile');
 var feedRoute = require('./routes/feed');
+var postRoute = require('./routes/post');
 
 
 var app = express();
@@ -44,6 +45,7 @@ app.use(passport.session());
 app.use('/', indexRoute);
 app.use('/profile', profileRoute);
 app.use('/feed', feedRoute);
+app.use('/post', postRoute);
 
 
 

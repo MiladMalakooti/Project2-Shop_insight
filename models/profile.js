@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+var profileSchema = new Schema({
     userName: String,
     email: String,
     googleId: String,
@@ -13,4 +13,4 @@ var userSchema = new Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Profile', profileSchema);

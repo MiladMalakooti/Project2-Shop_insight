@@ -4,15 +4,12 @@ const passport = require('passport');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res) {
   res.render('index', { 
     title: 'Shop Insight', 
     user: req.user });
 });
 
-router.get('/', function (req, res) {
-  res.render('index', { title: 'Shop Insight' });
-})
 
 router.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
