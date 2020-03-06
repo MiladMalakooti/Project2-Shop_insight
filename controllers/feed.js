@@ -21,30 +21,29 @@ function index(req, res, next) {
 }
 
 function create(req, res) {
-    req.body.userReporting = req.user._id;
-    const report = new Report(req.body);
-    // Creates the new report, and saves it to both the user model and reports model
+    req.body.userPosting = req.user._id;
+    const post = new Post(req.body);
     User.findById(req.user._id, function (err, currUser) {
       if (err) return res.redirect('./');
-      currUser.reports.push(report);
+      currUser.posts.push(post);
       currUser.save();
-      report.save(function (err) {
+      post.save(function (err) {
         res.redirect('/feed');
       });
     });
 }
   
 function deleteOne(req, res) {
-    Report.findByIdAndRemove(req.params.id, function (err, report) {
+    Post.findByIdAndRemove(req.params.id, function (err, post) {
       if (err) return res.redirect('./');
       res.redirect('/feed');
     });
 }
   
 function update(req, res) {
-    Report.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, report) {
+    Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, post) {
       if (err) return res.redirect('./');
-      console.log(report);
+      console.log(post);
       res.redirect('/feed');
     });
 }
