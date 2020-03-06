@@ -8,5 +8,23 @@
     <h1><%= title %></h1>
     <h1>Welcome to <%= title %></h1>
     <h2>Coming Soon with the complete web app</h2>
+
+    <div class="logintext">
+      <h1 class="logo">Shop Insight</h1>
+
+      <% if (user) { %>
+        <a href="/profile"><i class="material-icons left"></i>Profile</a><br>
+        <a href="/logout"><i class="material-icons left"></i>Log Out</a>
+      <% } else { %>
+              <p class="intro">Login to see products introduced by influencers  .</p>
+              <a href="/auth/google">
+              <img class="signinbtn" src="/images/signingoogle.png">
+    </a><br>
+        <a href="/auth/google"></i>Login with Google</a>
+      <% } %>
+
+      
+    </div>
+
   </body>
 </html>

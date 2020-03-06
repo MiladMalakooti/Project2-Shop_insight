@@ -1,19 +1,16 @@
 var mongoose = require('mongoose');
 
-var aboutSchema = new mongoose.Schema({
-    text: String
-}, {
-    timeStamps: true
-});
+var Schema = mongoose.Schema;
 
-var userSchema = new mongoose.Schema({
-    name: String,
+var userSchema = new Schema({
+    userName: String,
     email: String,
-    picture: String,
-    about: [aboutSchema],
-    googleId: String
-}, {
+    googleId: String,
+    email: String,
+    pic: String,
+    about: String,
+},{
     timestamps: true
-});
+})
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);

@@ -5,28 +5,28 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('user', { title: 'Shop Insight', user: req.user });
+  res.render('index', { 
+    title: 'Shop Insight', 
+    user: req.user });
 });
 
-// router.get('/', function(req, res) {
-//   res.redirect('/users');
-// });
+router.get('/', function (req, res) {
+  res.render('index', { title: 'Shop Insight' });
+})
 
-router.get('/auth/google', passport.authenticate(
-  'google',
-  {scope: ['profile', 'email']}
-));
-router.get('/oauth2callback', passport.authenticate(
-  'google',
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+router.get('/oauth2callback', passport.authenticate('google',
   {
-    successRedirect: '/users',
+    successRedirect: '/profile',// used to be user.
     failureRedirect: '/' // it could be directed to its own page where the login was not successful
   }
 ));
 
-router.get('/logout', function(req, res) {
+router.get('/logout', function (req, res) {
   req.logout();
-  res.redirect('/index'); // originally it was '/users' but after login it makes sense to go the main page
+  res.redirect('/');
 });
 
 module.exports = router;

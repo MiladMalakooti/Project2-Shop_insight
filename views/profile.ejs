@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="profile">
+    <img class="profilepic" src="<%=user.avatar%>" />
+
+    <div>
+      <p>E-mail: <%= user.email %></p>
+      <a
+      href="/" class="btn btn-outline-warning btn-sm" >Home Page</a>
+      
+      <a href="/editprofile/<%=user._id%>" class="btn btn-outline-warning btn-sm"
+        >Profile Settings</a>
+        
+        <ul class="right">
+          <li>
+          <% if (user) { %>
+            <a href="/logout"><i class="material-icons left"></i>Log Out</a>
+          <% } else { %>
+            <a href="/auth/google"></i>Login with Google</a>
+          <% } %>
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>
