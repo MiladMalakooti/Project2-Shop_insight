@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Insight</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <h2>Post a new Item</h2>
+  <form id="new-form" action="/posts" method="POST">
+    <label>Product name:</label>
+    <input type="text" name="product"><br><br>
+    <label>Brand:</label>
+    <input type="text" name="brand"><br><br>
+    <label>Barcode:</label>
+    <input type="text" name="barcode"><br><br>
+    <label>YouTube Link</label>
+    <input type="text" name="url"><br><br>
+    <label>Description</label>
+    <input type="text" name="description"><br><br>
+
+    <input type="submit" value="Add Item">
+  </form>
+</body>
+</html>

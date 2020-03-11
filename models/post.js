@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var postSchema = new Schema({
+const postSchema = new Schema({
     product: String,
-    url: String, // a youtube video
+    brand: String,
+    barcode: String,
+    url: [String], // a youtube video
     user: String,
     description: String,
     pId: String,
@@ -13,6 +15,10 @@ var postSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    userPosting: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      },
 
     adrs: String,
     comments: [{
@@ -22,5 +28,15 @@ var postSchema = new Schema({
 },{
     timestamps: true
 })
+
+
+const commentSchema = new Schema({
+    text: String,
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    userName: String
+  })
 
 module.exports = mongoose.model('Post', postSchema);  

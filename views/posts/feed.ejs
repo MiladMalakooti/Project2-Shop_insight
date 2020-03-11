@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><% title %> </title>
+</head>
+<body>
+  <h1>Feed Page</h1>
+
+  <% posts.forEach(function(r) { %>
+    <div class="each-post">
+
+        <div class="user-info">
+                <% if (r.userPosting.avatar) { %>
+                <img src="<%= r.userPosting.avatar %>" class="user-avatar">
+                <% } else { %>
+                <div class="reporter-pic"><i class="gg-bot"></i></div>
+                <% } %>
+                <div id="name-container">
+                    <a href="/profile" class="user-name"><%= r.userPosting.name %></a>
+                </div>
+        </div>
+
+        <div class="user-input">
+            <div class="container">
+                <h4 id="feed-product"><%= r.product %></h4>
+                <p id="feed-brand">by<%= r.brand %></p>
+            </div>
+        </div>
+
+        <div class="commnet-container">
+            <form class="new-comment" method="POST" action="/feed/<%= r._id %>/comments">
+                <input id="comment-input" type="text" name="text" placeholder="Write Your Comment Here"
+                    autocomplete="off" required>
+                <input type="submit" value="comment">
+            </form>
+
+            <% if (user) { %>
+            <% if (user._id.toString() === r.userPosting._id.toString()) { %>
+
+            <div id="user-access">
+                <span class=edit-button><button type="button" class="collapsible"
+                        class="post-edit-button">EDIT</button>
+                    <div class="content">
+                        <form id="edit-post-form" method="POST" action="/feed/<%= r._id %>?_method=PUT">
+                            <label>Title:
+                                <input type="text" name="post" value="<%= r.post %>">
+                            </label><br>
+                            <input type="submit" value="Submit Changes">
+                        </form>
+                    </div>
+                </span>
+                <span id="delete-feed">
+                    <form action="/feed/<%= r._id %>?_method=DELETE" class="delete-form" method="POST">
+                        <button type="submit" class="delete">DELETE</button>
+                    </form>
+                </span>
+            </div>
+            <% } else { %>
+            <% } %>
+            <% } else { %>
+            <% } %>
+        </div>
+
+        <div class="feed-comments">
+            <div class="content">
+                <% if (r.comments.length) { %>
+
+                <% r.comments.forEach(function(c) { %>
+
+                <div class="each-comment">
+                    <%= c.userName %>: <%= c.text %>
+
+                    <% if (user) { %>
+                    <% if (user._id.toString() === c.userId.toString()) { %>
+                    <button class="each-comment-button"><i class="gg-pen"></i></button>
+                    <form action="/<%= r._id %>/comments/<%= c._id %>?_method=DELETE" method="POST">
+                        <button class="each-comment-button" type="submit"><i class="gg-trash"></i></button>
+                    </form>
+                    <% } else { %>
+                    <% } }%>
+                </div>
+                <% }); %>
+
+                <% } else { %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+</body>
+</html>

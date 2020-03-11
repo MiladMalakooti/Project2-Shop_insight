@@ -8,6 +8,19 @@ function show(req, res) {
   })
 }
 
+function create(req, res) {
+  req.body.userReporting = req.user._id;
+  const post = new Post(req.body);
+  User.findById(req.user._id, function (err, currUser) {
+    if (err) return res.redirect('./');
+    currUser.reports.push(post);
+    currUser.save();
+    report.save(function (err) {
+      res.redirect('/post');
+    });
+  });
+}
+
 function addLike(req, res, next) {
   Posts.findById(req.params.id, function (err, post) {
       Users.findOne({ googleId: post.pId }, function (err, user) {

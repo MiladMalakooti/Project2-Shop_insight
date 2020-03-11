@@ -9,12 +9,13 @@ const passport = require('passport');
 //Route handlers
 var indexRoute = require('./routes/index');
 var profileRoute = require('./routes/profile');
-var feedRoute = require('./routes/feed');
-var postRoute = require('./routes/post');
+//var feedRoute = require('./routes/feed');  ////////
+var postRoute = require('./routes/posts');
 
 
 var app = express();
 require('dotenv').config();
+require('dotenv').config({ path: 'ENV_FILENAME' });
 
 
 require('./config/database')
@@ -44,11 +45,11 @@ app.use(passport.session());
 
 app.use('/', indexRoute);
 app.use('/profile', profileRoute);
-app.use('/feed', feedRoute);
-app.use('/post', postRoute);
+//app.use('/feed', feedRoute); //////
+app.use('/posts', postRoute);
 
 
-
+ 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
