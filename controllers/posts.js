@@ -1,4 +1,4 @@
-const Post = require('../models/post');//
+const Post = require('../models/post');
 module.exports = {
 	index,
 	new: newPost,
@@ -7,22 +7,27 @@ module.exports = {
 
 };
 function index(req, res) {
-	Post.find({}, function(err, posts){
+	Post.find({}, function (err, posts) {
 		if (err) return next(err);
-		res.render('/posts/feed', {posts,
+		res.render('posts/feed', {
+			posts,
 			user: req.user,
-			title: 'Shop Insight'});
+			title: 'Shop Insight'
+		});
+		// console.log(req.user.id, post.owner)
 	});
 }
 
 
 function create(req, res) {
+	console.log(req.user)
+	req.body.owner = req.user._id;
+	console.log(req.body)
 	const post = new Post(req.body);
-	post.save(function(err) {
+	post.save(function (err) {
 		if (err) return res.render('posts/new');
-		console.log(post);
-		res.redirect('/posts/feed');
-		
+		console.log(post._id);
+		res.redirect('/posts');
 	});
 
 }
@@ -32,5 +37,5 @@ function newPost(req, res, next) {
 }
 
 function show(req, res) {
-  res.render('post', { title: 'Shop Insight', user: req.user })
+	res.render('post', { title: 'Shop Insight', user: req.user })
 }
