@@ -1,10 +1,10 @@
 var Posts = require('../models/post');
-var Profile = require('../models/profile');
+var User = require('../models/user');
 
 //funcs:
 function show(req, res) {
   req.user.populate('photos', function (err, user) {
-      res.render('profile', { user: req.user, title: 'Shop Insight' });
+      res.render('user', { user: req.user, title: 'Shop Insight' });
   })
 }
 
@@ -70,7 +70,7 @@ function deletePost(req, res){
   Posts.findById(req.params.i_id, function(err, post){
       post.remove();
       post.save(function(err){
-        res.redirect(`/profile/${req.user.adrs}`);
+        res.redirect(`/user/${req.user.adrs}`);
       })
 })}
 

@@ -37,7 +37,7 @@
             </form>
 
             <% if (user) { %>
-                <h1>User: <%= user %> </h1>
+                <h1>User: <%= user.name %> </h1>
             <% if (user._id === r.owner) { %>
 
             <div id="user-access">
