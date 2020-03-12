@@ -3,11 +3,21 @@ module.exports = {
 	index,
 	new: newPost,
 	create,
-	show
-
+	show,
+	update
+	// delete: deletePost
 };
+
+function update(req, res) {
+	Post.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
+			if (err) return res.redirect('/posts');
+			res.redirect('/posts')
+	});
+}
+
 function index(req, res) {
 	Post.find({}, function (err, posts) {
+		console.log("Here")
 		if (err) return next(err);
 		res.render('posts/feed', {
 			posts,

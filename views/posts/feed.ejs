@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><% title %> </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% title %> </title>
 </head>
+
 <body>
-  <h1>Feed Page</h1>
-
-  <% posts.forEach(function(r) { %>
+    <h1>Feed Page</h1>
+    <hr>
+    <% posts.forEach(function(r) { %>
     <div class="each-post">
-
         <div class="user-info">
-                <% if (r.avatar) { %>
-                <img src="<%= r.avatar %>" class="user-avatar">
-                <% } else { %>
-                <div class="reporter-pic"><i class="gg-bot"></i></div>
-                <% } %>
-                <div id="name-container">
-                    <a href="/profile" class="user-name"><%= r.name %></a>
-                </div>
+            <div id="name-container">
+                <a href="/profile" class="user-name"><%= r.name %></a>
+            </div>
         </div>
 
-        <div class="user-input">
-            <div class="container">
+            <div class="post-container">
                 <h4 id="feed-product"><%= r.product %></h4>
-                <p id="feed-brand">by<%= r.brand %></p>
+                <p id="feed-barcode">barcode <%= r.barcode %></p>
+                <p id="feed-url">youtubelink <%= r.url %></p>
+                <p id="feed-description">Description <%= r.description %></p>
             </div>
-        </div>
 
-        <div class="comment-container">
-            <form class="new-comment" method="POST" action="/feed/<%= r._id %>/comments">
-                <input id="comment-input" type="text" name="text" placeholder="Write Your Comment Here"
-                    autocomplete="off" required>
-                <input type="submit" value="comment">
-            </form>
+        <% if (user) { %>
+        <h5>Posted by <%= user.name %> </h5>
+        <% if (String(user._id) === String(r.owner)) { %>
 
-            <% if (user) { %>
-                <h1>User: <%= user.name %> </h1>
-            <% if (user._id === r.owner) { %>
+        <div id="user-access">
+            <div class="content">
+                <form id="edit-post-form" method="POST" action="/posts/<%= r._id %>?_method=POST">
+                    <label>Edit Product:
+                        <input type="text" name="product" placeholder="<%= r.product %>">
+                    </label><br>
 
-            <div id="user-access">
-                <span class=edit-button><button type="button" class="collapsible"
-                        class="post-edit-button">EDIT</button>
-                    <div class="content">
-                        <form id="edit-post-form" method="POST" action="/feed/<%= r._id %>?_method=PUT">
-                            <label>Title:
-                                <input type="text" name="post" value="<%= r.post %>">
-                            </label><br>
-                            <input type="submit" value="Submit Changes">
-                        </form>
-                    </div>
-                </span>
-                <span id="delete-feed">
-                    <form action="/feed/<%= r._id %>?_method=DELETE" class="delete-form" method="POST">
-                        <button type="submit" class="delete">DELETE</button>
-                    </form>
-                </span>
+                    <label>Edit Brand:
+                        <input type="text" name="brand" placeholder="<%= r.brand %>">
+                    </label><br>
+
+                    <label>Edit Barcode:
+                        <input type="text" name="barcode" placeholder="<%= r.barcode %>">
+                    </label><br>
+
+                    <label>Edit YouTube Link:
+                        <input type="text" name="url" placeholder="<%= r.url %>">
+                    </label><br>
+
+                    <label>Edit Description:
+                        <input type="text" name="Description" placeholder="<%= r.Description %>">
+                    </label><br>
+                    <input type="submit" value="Submit Changes">
+                </form>
             </div>
-            <% } else { %>
-            <% } %>
-            <% } else { %>
-            <% } %>
+                <hr>
+                <!-- ____________________________ -->
+            <span id="delete-feed">
+                <form action="/feed/<%= r._id %>?_method=DELETE" class="delete-form" method="POST">
+                    <button type="submit" class="delete">DELETE</button>
+                </form>
+            </span>
         </div>
+        <% } else { %>
+        <% } %>
+        <% } else { %>
+        <% } %>
 
         <div class="feed-comments">
             <div class="content">
@@ -91,4 +94,5 @@
     </div>
     <% }); %>
 </body>
+
 </html>

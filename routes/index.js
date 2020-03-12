@@ -15,7 +15,7 @@ router.get('/auth/google',
 );
 router.get('/oauth2callback', passport.authenticate('google',
   {
-    successRedirect: '/profile',// used to be user.
+    successRedirect: '/posts',// used to be user.
     failureRedirect: '/' // it could be directed to its own page where the login was not successful
   }
 ));

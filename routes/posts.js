@@ -10,16 +10,11 @@ function isLoggedIn(req, res, next) {
 router.get('/', postCtrl.index);
 
 router.get('/new', postCtrl.new );
+router.post('/:id', postCtrl.update);
+// router.post('/:id', postCtrl.delete);
 
 
 router.post('/', postCtrl.create );
 
-
-/// to be deleted:
-// router.get('/', isLoggedIn, postCtrl.show);
-// router.get('/post', isLoggedIn, postCtrl.index);
-// router.post('/:id', isLoggedIn, postCtrl.create);
-// router.delete('/:id', isLoggedIn, postCtrl.delete);
-// router.put('/:id', isLoggedIn, postCtrl.update);
 
 module.exports = router;
