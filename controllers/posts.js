@@ -52,8 +52,8 @@ function show(req, res) {
 
 function deletePost(req, res) {
 	Post.findByIdAndDelete(req.params.id, req.body, (err, post) => {
-			if (err) return res.redirect('./post');
-			res.redirect('./post')
+			if (err) return res.redirect('./');
+			res.redirect('./')
 			console.log("hit delete")
 	})
 }

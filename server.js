@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session =require('express-session');
 const passport = require('passport');
+var methodOverride = require('method-override');
+
 
 //Route handlers
 var indexRoute = require('./routes/index');
@@ -42,6 +44,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(methodOverride('_method'));
 
 app.use('/', indexRoute);
 app.use('/user', userRoute);
