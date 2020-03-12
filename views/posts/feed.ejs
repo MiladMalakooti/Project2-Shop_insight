@@ -49,24 +49,28 @@
                     </label><br>
 
                     <label>Edit Description:
-                        <input type="text" name="Description" placeholder="<%= r.Description %>">
+                        <input type="text" name="description" placeholder="<%= r.description %>">
                     </label><br>
                     <input type="submit" value="Submit Changes">
                 </form>
             </div>
-                <hr>
+            
                 <!-- ____________________________ -->
-            <span id="delete-feed">
-                <form action="/feed/<%= r._id %>?_method=DELETE" class="delete-form" method="POST">
-                    <button type="submit" class="delete">DELETE</button>
-                </form>
-            </span>
+            
+                
+
+                <div id="delete-report">
+                    <form action="/posts/<%= r._id %>?_method=DELETE" class="delete-form" method="POST">
+                        <button type="submit" class="delete">DELETE</button>
+                    </form>
+                </div>
+            
         </div>
         <% } else { %>
         <% } %>
         <% } else { %>
         <% } %>
-
+<hr>
         <div class="feed-comments">
             <div class="content">
                 <% if (r.comments.length) { %>

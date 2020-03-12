@@ -4,10 +4,10 @@ module.exports = {
 	new: newPost,
 	create,
 	show,
-	update
-	// delete: deletePost
+	update,
+	delete: deletePost
 };
-
+ 
 function update(req, res) {
 	Post.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
 			if (err) return res.redirect('/posts');
@@ -49,3 +49,13 @@ function newPost(req, res, next) {
 function show(req, res) {
 	res.render('post', { title: 'Shop Insight', user: req.user })
 }
+
+function deletePost(req, res) {
+	Post.findByIdAndDelete(req.params.id, req.body, (err, post) => {
+			if (err) return res.redirect('./post');
+			res.redirect('./post')
+			console.log("hit delete")
+	})
+}
+
+

@@ -11,7 +11,7 @@ router.get('/', postCtrl.index);
 
 router.get('/new', postCtrl.new );
 router.post('/:id', postCtrl.update);
-// router.post('/:id', postCtrl.delete);
+router.delete('/:id', postCtrl.delete);
 
 
 router.post('/', postCtrl.create );
