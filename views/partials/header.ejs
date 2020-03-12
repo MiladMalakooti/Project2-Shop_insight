@@ -1,12 +1,18 @@
 <html>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 <body>
-  <p>Hello <%= user.email %></p>
-  <a href="/posts/new" class="btn btn-outline-warning btn-sm" >Post a New product</a>
-  <% if (user) { %>
-    <a href="/logout"><i class="material-icons left"></i>Log Out</a>
-  <% } else { %>
-    <a href="/auth/google"></i>Login with Google</a>
-  <% } %>    
-  
+  <div>
+    <h3>Hello <%= user.email %></h3>
+    <a href="/" class="btn btn-outline-warning btn-sm" >Home Page</a> <br><br><br>
+    <a href="/posts" class="btn btn-outline-warning btn-sm" >Feed</a> <br><br><br>
+    <a href="/posts/new" class="btn btn-outline-warning btn-sm" >Post a New product</a> <br><br><br>
+    <% if (user) { %>
+      <a href="/logout"><i class="material-icons left"></i>Log Out</a>
+      <% } else { %>
+        <a href="/auth/google"></i>Login with Google</a>
+        <% } %>
+      </div>
 </body>
 </html>
+<style>
+</style>

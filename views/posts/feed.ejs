@@ -1,28 +1,29 @@
 <!DOCTYPE html>
+<% include ../partials/header %>
 <html lang="en">
 
 <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><% title %> </title>
 </head>
 
-<body>
-    <h1>Feed Page</h1>
+<body id="feedbackground">
+    <h1 id="feedpage">Feed Page</h1>
     <hr>
     <% posts.forEach(function(r) { %>
-    <div class="each-post">
+    <div class="each-post" id="each-post">
         <div class="user-info">
             <div id="name-container">
-                <a href="/profile" class="user-name"><%= r.name %></a>
+                <!-- <a href="/profile" class="user-name"><#%= r.name %></a> -->
             </div>
         </div>
-
             <div class="post-container">
                 <h4 id="feed-product"><%= r.product %></h4>
-                <p id="feed-barcode">barcode <%= r.barcode %></p>
-                <p id="feed-url">youtubelink <%= r.url %></p>
-                <p id="feed-description">Description <%= r.description %></p>
+                <p id="feed-barcode">barcode: <%= r.barcode %></p>
+                <p id="feed-url">YouTube Link: <%= r.url %></p>
+                <p id="feed-description">Description: <%= r.description %></p>
             </div>
 
         <% if (user) { %>
@@ -51,17 +52,17 @@
                     <label>Edit Description:
                         <input type="text" name="description" placeholder="<%= r.description %>">
                     </label><br>
-                    <input type="submit" value="Submit Changes">
+                    <input type="submit" id="submitbtn " value="Submit Changes">
                 </form>
             </div>
             
                 <!-- ____________________________ -->
             
                 
-
+                <br><br>
                 <div id="delete-report">
                     <form action="/posts/<%= r._id %>?_method=DELETE" class="delete-form" method="POST">
-                        <button type="submit" class="delete">DELETE</button>
+                        <button type="submit" class="delete">DELETE POST</button>
                     </form>
                 </div>
             
@@ -77,18 +78,6 @@
 
                 <% r.comments.forEach(function(c) { %>
 
-                <div class="each-comment">
-                    <%= c.userName %>: <%= c.text %>
-
-                    <% if (user) { %>
-                    <% if (user._id.toString() === c.userId.toString()) { %>
-                    <button class="each-comment-button"><i class="gg-pen"></i></button>
-                    <form action="/<%= r._id %>/comments/<%= c._id %>?_method=DELETE" method="POST">
-                        <button class="each-comment-button" type="submit"><i class="gg-trash"></i></button>
-                    </form>
-                    <% } else { %>
-                    <% } }%>
-                </div>
                 <% }); %>
 
                 <% } else { %>

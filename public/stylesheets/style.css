@@ -6,3 +6,98 @@ body {
 a {
   color: #00B7FF;
 }
+body {
+  /* https://html-css-js.com/css/generator/gradient/*/
+  background: #0EA8CE;
+  background: -moz-linear-gradient(45deg, #0EA8CE 0%, #1B90CE 100%);
+  background: -webkit-linear-gradient(45deg, #0EA8CE 0%, #1B90CE 100%);
+  background: linear-gradient(45deg, #0EA8CE 0%, #1B90CE 100%);
+}
+
+#welcome {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
+#title, #welcome, .intro {
+  text-align: center;
+  
+}
+.signinbtn {
+  height: 150px;
+  width: 270px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#feedpage {
+  text-align: center;
+  font-size: 50px;
+  
+}
+
+#feedbackground {
+  background:
+    -webkit-linear-gradient(315deg, hsla(161.03, 90.87%, 44.55%, 1) 0%, hsla(161.03, 90.87%, 44.55%, 0) 70%),
+    -webkit-linear-gradient(65deg, hsla(154.05, 94.65%, 49.69%, 1) 10%, hsla(154.05, 94.65%, 49.69%, 0) 80%),
+    -webkit-linear-gradient(135deg, hsla(299.55, 99.82%, 44.69%, 1) 15%, hsla(299.55, 99.82%, 44.69%, 0) 80%),
+    -webkit-linear-gradient(205deg, hsla(168.34, 94.62%, 43.43%, 1) 100%, hsla(168.34, 94.62%, 43.43%, 0) 70%);
+  background:
+    linear-gradient(135deg, hsla(161.03, 90.87%, 44.55%, 1) 0%, hsla(161.03, 90.87%, 44.55%, 0) 70%),
+    linear-gradient(25deg, hsla(154.05, 94.65%, 49.69%, 1) 10%, hsla(154.05, 94.65%, 49.69%, 0) 80%),
+    linear-gradient(315deg, hsla(299.55, 99.82%, 44.69%, 1) 15%, hsla(299.55, 99.82%, 44.69%, 0) 80%),
+    linear-gradient(245deg, hsla(168.34, 94.62%, 43.43%, 1) 100%, hsla(168.34, 94.62%, 43.43%, 0) 70%);
+}
+
+
+.each-post {
+  -webkit-box-shadow: 0px 0px 50px 33px #FFE2A6; 
+  box-shadow: 0px 0px 50px 33px #FFE2A6;
+  }
+
+  #each-post{
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  #feed-product, #each-post{
+    text-align: center;
+
+  }
+
+  #feed-product {
+    font-size: 40px;
+  }
+
+
+  label {
+    display: inline-block;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+
+a {
+  background-color: red;
+box-shadow: 0 5px 0 darkred;
+color: white;
+padding: 1em 1.5em;
+position: relative;
+text-decoration: none;
+text-transform: uppercase;
+}
+
+a:hover {
+background-color: #ce0606;
+}
+
+a:active {
+box-shadow: none;
+top: 5px;
+}
+
+#indexpagebtns{
+  /* display: none; */
+}

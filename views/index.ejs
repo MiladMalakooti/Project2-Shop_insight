@@ -5,22 +5,22 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <h1>Welcome to <%= title %></h1>
-    <h2>Coming Soon with the complete web app</h2>
+    <h1 id="title"><%= title %></h1>
+    <h1 id="welcome">Welcome to <%= title %></h1>
+    <!-- <h2>Coming Soon with the complete web app</h2> -->
 
     <div class="logintext">
-      <h1 class="logo">Shop Insight</h1>
+      <!-- <h1 class="logo">Shop Insight</h1> -->
 
       <% if (user) { %>
-        <a href="/user"><i class="material-icons left"></i>Profile</a><br>
+        <a href="/user"><i class="material-icons left"></i>Profile</a><br> <br><br>
         <a href="/logout"><i class="material-icons left"></i>Log Out</a>
       <% } else { %>
               <p class="intro">Login to see products introduced by influencers  .</p>
-              <a href="/auth/google">
-              <img class="signinbtn" src="/images/signingoogle.png">
+              <a id= "indexpagebtns" href="/auth/google">
+              <img class="signinbtn" src="/images/signingoogle2.png">
     </a><br>
-        <a href="/auth/google"></i>Login with Google</a>
+        
       <% } %>
 
       
@@ -28,4 +28,4 @@
 
   </body>
 </html>
-<% include ./partials/footer %>
+<!-- <%# include ./partials/footer %> -->
